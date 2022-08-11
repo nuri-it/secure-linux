@@ -76,7 +76,7 @@ PermitRootLogin no
 
 On Debian
 ```
-sudo apt install fail2ban
+sudo apt install fail2ban -y
 ```
 
 On Arch Linux
