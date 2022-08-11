@@ -66,7 +66,7 @@ sudo nano /etc/ufw/before.rules
 
 
 
-## Auto update the system
+## Auto update the system (only Debian)
 
 
 To let the system install the updates automatically
