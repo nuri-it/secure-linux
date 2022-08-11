@@ -188,4 +188,10 @@ sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 ```
 
+
+Noe restart ssh to apply the new configuration
+
+```
+sudo systemctl restart sshd.service
+```
 #gg
