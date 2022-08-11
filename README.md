@@ -72,4 +72,38 @@ AddressFamily inet
 PermitRootLogin no
 ```
 
+## Install and configure Fail2Ban
+
+On Debian
+```
+sudo apt install fail2ban
+```
+
+On Arch Linux
+```
+sudo pacman -Syu fail2ban
+```
+
+Configuration file examples and defaults are in two main files /etc/fail2ban/fail2ban.conf and /etc/fail2ban/jail.conf
+
+To configure fail2ban
+```
+sudo nano /etc/fail2ban/jail.local
+```
+```
+[DEFAULT]
+ignoreip = 127.0.0.1/8 ::1
+bantime = 3600
+findtime = 600
+maxretry = 5
+
+[sshd]
+enabled = true
+```
+enable Fail2Ban
+```
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+```
+
 #gg
