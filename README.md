@@ -2,70 +2,6 @@
 Harden Linux Server using ufw, Fail2Ban and configuring ssh
 
 
-
-## Install and Configure ufw
-
-
-
-Debian based distros
-
-```
-sudo apt update ; sudo apt install ufw -y
-```
-
-
-Arch based distros
-
-```
-sudo pacman -Syu ufw
-```
-
-
-
-To check ufw status
-
-```
-sudo ufw status
-```
-
-
-add some Rules, here an example
-
-```
-sudo ufw limit 22/tcp
-sudo ufw allow 443/tcp
-sudo ufw default deny incoming
-sudo ufw default allow outgoing
-```
-
-
-
-
-When finished enable the ufw
-
-```
-sudo ufw enable
-```
-
-
-
-
-If you want to go further away and deny Ping replys
-
-```
-sudo nano /etc/ufw/before.rules
-```
-
-
-
-
-```
-# ok icmp codes for INPUT
--A ufw-before-input -p icmp --icmp-type echo-request -j DROP
-```
-
-
-
 ## Auto update the system (only Debian)
 
 
@@ -146,6 +82,69 @@ Now restart ssh to apply the new configuration
 ```
 sudo systemctl restart sshd.service
 ```
+
+## Install and Configure ufw
+
+
+
+Debian based distros
+
+```
+sudo apt update ; sudo apt install ufw -y
+```
+
+
+Arch based distros
+
+```
+sudo pacman -Syu ufw
+```
+
+
+
+To check ufw status
+
+```
+sudo ufw status
+```
+
+
+add some Rules, here an example
+
+```
+sudo ufw limit 22/tcp
+sudo ufw allow 443/tcp
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+
+
+
+
+When finished enable the ufw
+
+```
+sudo ufw enable
+```
+
+
+
+
+If you want to go further away and deny Ping replys
+
+```
+sudo nano /etc/ufw/before.rules
+```
+
+
+
+
+```
+# ok icmp codes for INPUT
+-A ufw-before-input -p icmp --icmp-type echo-request -j DROP
+```
+
+
 
 
 ## Install and configure Fail2Ban
