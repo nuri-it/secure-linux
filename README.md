@@ -83,6 +83,8 @@ Now restart ssh to apply the new configuration
 sudo systemctl restart sshd.service
 ```
 
+More Tips on hardning SSH can be found [here](https://www.cyberciti.biz/tips/linux-unix-bsd-openssh-server-best-practices.html)
+
 ## Install and Configure ufw
 
 
@@ -197,5 +199,39 @@ Enable Fail2Ban
 sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 ```
+
+## Delete unwanted Software
+The more software you use, the larger the attack surface for your Linux install is. Always remove unwanted Software und unused dependencies.
+
+To delete unused dependencies on Debian based Distros:
+
+```
+sudo apt auto-remove
+```
+On Arch based Distros:
+```
+pacman -Qtdq | sudo pacman -Rns -
+```
+## Remove unused Services
+And just like Software, it is always good to uninstall unused Services
+
+You can list the unused Services by typing:
+```
+systemctl list-unit-files
+```
+
+To stop a service you dont need:
+```
+sudo systemctl stop service-name
+```
+To stop service from staring at boot:
+```
+sudo systemctl disable service-name
+```
+
+## To Dos
+
+- ClamAV
+- Desktop Software
 
 #gg
